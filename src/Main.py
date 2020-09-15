@@ -9,7 +9,7 @@ import csv
 
 # Globals
 package_table = PackageHashTable()
-csv_path = "Assets/package.csv"
+csv_path = "./src/Assets/package.csv"
 
 # Populate all of the packages from csv file into the hashtable
 with open(csv_path) as package_file:
