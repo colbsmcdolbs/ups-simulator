@@ -2,7 +2,7 @@
 PackageHashTable that will hold all of the packages for the day
 """
 
-from classes.Package import Package as pack
+from Classes.Package import Package
 
 class PackageHashTable:
     
@@ -16,16 +16,17 @@ class PackageHashTable:
 
     # Methods
 
-    def put(self, package: pack):
+    def put(self, package: Package):
         i = 0
-        print(package.id)
         notFound = True
         while notFound:
             index = self.__double_hash(package.id, i)
-            if not self.hashTable[index]:
+            if self.hashTable[index]:
                 self.hashTable[index] = package
                 notFound = False
-            i = i + 1
+                break
+            else:
+                i = i + 1
 
     def get(self, packageId):
         i = 0
@@ -39,7 +40,7 @@ class PackageHashTable:
             elif packageId != package.id: # Case of collisions
                 i = i + 1
 
-    def remove(self, package: pack):
+    def remove(self, package: Package):
         return ""
 
     def __double_hash(self, packageId: int, i: int):
@@ -71,3 +72,10 @@ class PackageHashTable:
 
         """
         return (self.__prime - (int(packageId) % self.__prime))
+
+    def print_packages(self):
+        index = 1
+        for pack in self.hashTable:
+            print(f"{index} : {pack}")
+            index = index + 1
+        print(f"Total Packages: {len(self.hashTable)}")
