@@ -2,7 +2,7 @@
 Package class that will be the model for the data within the CSV file.
 """
 
-class Package:
+class package:
 
     def __init__(self, id, address, city, state, zip, deadline, mass, special_notes):
         self.id = id

@@ -4,4 +4,4 @@ WORKDIR /src
 
 COPY . .
 
-ENTRYPOINT python3 ./src/Main.py
+ENTRYPOINT python3 ./src/main.py

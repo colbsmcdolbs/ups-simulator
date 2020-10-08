@@ -1,10 +1,10 @@
 """
-PackageHashTable that will hold all of the packages for the day
+Table that will hold all of the packages for the day
 """
 
-from Classes.Package import Package
+from classes.package import package
 
-class PackageHashTable:
+class package_table:
     
     # Constructor
 
@@ -16,7 +16,7 @@ class PackageHashTable:
 
     # Methods
 
-    def put(self, package: Package):
+    def put(self, package: package):
         i = 0
         notFound = True
         while notFound:
@@ -40,7 +40,7 @@ class PackageHashTable:
             elif packageId != package.id: # Case of collisions
                 i = i + 1
 
-    def remove(self, package: Package):
+    def remove(self, package: package):
         return ""
 
     def __double_hash(self, packageId: int, i: int):

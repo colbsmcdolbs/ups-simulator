@@ -2,14 +2,17 @@
 
 ## Getting Started
 
-### Build the Dockerfile
+### Running the Simulation
+
+(You should always make sure the file you are checking is safe before doing this by the way...) Run this command
 
 ```shell
-$ docker build -t ups-simulator .
+sudo chmod +x run.sh
 ```
 
-### Run the Docker Image
+Then run this command with Docker installed and running...
 
 ```shell
-$ docker run -it --rm --name ups-simulator ups-simulator
+./run.sh
 ```
+
