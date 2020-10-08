@@ -6,6 +6,7 @@ Fancy schmancy stuff will be abstracted out into separate classes and util files
 
 from classes.package import package as Package
 from classes.package_table import package_table
+from classes.truck import truck as Truck
 import csv
 from pathlib import Path
 
@@ -32,3 +33,52 @@ with open(f"{str(file_path)}/assets/distance.csv") as csvDataFile:
     distances = [row for row in csv.reader(csvDataFile)]
 
 print("End of Run.")
+
+"""
+def generate_truck(truck_number):
+    truck = Truck()
+    
+    if truck_number is 1:
+        truck.add_package(package_table.get(13))
+        truck.add_package(package_table.get(14))
+        truck.add_package(package_table.get(15))
+        truck.add_package(package_table.get(16))
+        truck.add_package(package_table.get(19))
+        truck.add_package(package_table.get(20))
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+    elif truck_number is 2:
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+        truck.add_package(package_table.get())
+    elif truck_number is 3:
+        truck.add_package(package_table.get(6))
+        truck.add_package(package_table.get(25))
+        truck.add_package(package_table.get(28))
+        truck.add_package(package_table.get(32))
+        truck.add_package(package_table.get(9))
+        truck.add_package(package_table.get())
+
+    return truck
+"""
