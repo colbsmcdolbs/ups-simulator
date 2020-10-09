@@ -1,9 +1,9 @@
 """
 Truck class that will represent the driver's of the packages.
 """
-from classes.package import package
+from classes.package import Package
 
-class truck:
+class Truck:
 
     def __init__(self):
         self.package_limit = 16
@@ -11,11 +11,8 @@ class truck:
         self.packages = set()
         self.speed = 18
 
-    def add_package(self, package: package):
+    def add_package(self, package: Package) -> None:
         self.packages.add(package)
 
-    def get_total_packages(self):
+    def get_total_packages(self) -> int:
         return len(self.packages)
-
-    def deliver_package(self, package_id):
-        return None

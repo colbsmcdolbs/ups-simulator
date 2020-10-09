@@ -2,9 +2,9 @@
 Table that will hold all of the packages for the day
 """
 
-from classes.package import package
+from classes.package import Package
 
-class package_table:
+class Package_Table:
     
     # Constructor
 
@@ -16,7 +16,7 @@ class package_table:
 
     # Methods
 
-    def put(self, package: package):
+    def put(self, package: Package) -> None:
         i = 0
         notFound = True
         while notFound:
@@ -28,7 +28,7 @@ class package_table:
             else:
                 i = i + 1
 
-    def get(self, packageId):
+    def get(self, packageId: int) -> Package:
         i = 0
         while True:
             index = self.__double_hash(packageId, i)
@@ -40,7 +40,7 @@ class package_table:
             elif packageId != package.id: # Case of collisions
                 i = i + 1
 
-    def remove(self, package: package):
+    def remove(self, package: Package) -> None:
         return ""
 
     def __double_hash(self, packageId: int, i: int):
@@ -53,7 +53,7 @@ class package_table:
         """
         return (self.__hash1(packageId) + (i * self.__hash2(packageId))) % self.__table_size
 
-    def __hash1(self, packageId):
+    def __hash1(self, packageId: int) -> int:
         """Calculates the first hash of the packageId
 
         Time Complexity
@@ -63,7 +63,7 @@ class package_table:
         """
         return (int(packageId) % self.__table_size)
 
-    def __hash2(self, packageId):
+    def __hash2(self, packageId: int) -> int:
         """Calculates the second hash of the packageId
 
         Time Complexity
@@ -73,7 +73,7 @@ class package_table:
         """
         return (self.__prime - (int(packageId) % self.__prime))
 
-    def print_packages(self):
+    def print_packages(self) -> None:
         index = 1
         for pack in self.hashTable:
             print(f"{index} : {pack}")
