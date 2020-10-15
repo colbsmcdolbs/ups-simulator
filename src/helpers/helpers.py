@@ -6,7 +6,7 @@ def generate_truck(truck_number: int, package_table: Package_Table) -> Truck:
     Manually load ALL the trucks!
     """
     truck = Truck()
-    if truck_number is 1:
+    if truck_number == 1:
         truck.add_package(package_table.get(13))
         truck.add_package(package_table.get(14))
         truck.add_package(package_table.get(15))
@@ -23,7 +23,7 @@ def generate_truck(truck_number: int, package_table: Package_Table) -> Truck:
         truck.add_package(package_table.get(39))
         truck.add_package(package_table.get(27))
         truck.add_package(package_table.get(35))
-    elif truck_number is 2:
+    elif truck_number == 2:
         truck.add_package(package_table.get(25))
         truck.add_package(package_table.get(18))
         truck.add_package(package_table.get(36))
@@ -40,7 +40,7 @@ def generate_truck(truck_number: int, package_table: Package_Table) -> Truck:
         truck.add_package(package_table.get(12))
         truck.add_package(package_table.get(23))
         truck.add_package(package_table.get(11))
-    elif truck_number is 3:
+    elif truck_number == 3:
         truck.add_package(package_table.get(2))
         truck.add_package(package_table.get(33))
         truck.add_package(package_table.get(10))
@@ -52,5 +52,5 @@ def generate_truck(truck_number: int, package_table: Package_Table) -> Truck:
 
     return truck
 
-def replace_directions(input: str) -> str:
-    return input.replace('North', 'N').replace('South', 'S').replace('East', 'E').replace('West', 'W')
+def clean_address(input: str) -> str:
+    return input.replace('North', 'N').replace('South', 'S').replace('East', 'E').replace('West', 'W').replace('\n', '')
