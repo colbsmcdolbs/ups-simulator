@@ -14,7 +14,7 @@ class Package:
         self.deadline = deadline
         self.mass = mass
         self.special_notes = special_notes
-        self.delivery_status = Delivery_Status.NOT_DELIVERED.value
+        self.delivery_status = Delivery_Status.HUB.value
         self.delivery_time = None
 
     def deliver_package(self, time: str) -> None:
@@ -26,6 +26,6 @@ class Package:
 
 
 class Delivery_Status(Enum):
-    NOT_DELIVERED = "Not Delivered"
-    DELIVERED = "Delivered"
-    DELAYED = "Delayed"
+    HUB = "HUB"
+    IN_TRANSIT = "IN TRANSIT"
+    DELIVERED = "DELIVERED"

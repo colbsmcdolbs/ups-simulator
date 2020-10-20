@@ -1,5 +1,6 @@
 from classes.truck import Truck
 from classes.package_table import Package_Table
+import re
 
 def generate_truck(truck_number: int, package_table: Package_Table) -> Truck:
     """
@@ -53,4 +54,5 @@ def generate_truck(truck_number: int, package_table: Package_Table) -> Truck:
     return truck
 
 def clean_address(input: str) -> str:
-    return input.replace('North', 'N').replace('South', 'S').replace('East', 'E').replace('West', 'W').replace('\n', '')
+    clean_string = input.replace('North', 'N').replace('South', 'S').replace('East', 'E').replace('West', 'W').replace('\n', '').strip()
+    return re.sub(r'\([^()]*\)', '', clean_string)

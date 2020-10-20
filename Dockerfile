@@ -1,6 +1,4 @@
-FROM python:3.8-alpine3.12
-
-WORKDIR /src
+FROM python:3.9-alpine3.12
 
 COPY . .
 
