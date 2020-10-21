@@ -5,8 +5,10 @@
 - [X] Add tests to look into HashTable.... Or at least debug
 - [X] Add in main function adding all of the data into the hashtable, print to test it.
 - [X] Make a Graph that has weighted values based off the data from the distance.csv
-- [ ] Implement an Algorithm to create the fastest route
+- [ ] Implement an Algorithm to create the fastest route (GREEDY)
 - [X] Add Truck Class
 - [X] Flesh out Truck Class more
 - [X] Add Graph/Vertx Classes
-- [ ] Make a Graph that has weighted values based off the data from the distance.csv
+- [X] Make a Graph that has weighted values based off the data from the distance.csv
+- [ ] Make truck class so that it can do everything it needs to deliver packages
+- [ ] Make main algorithm that will follow the trucks

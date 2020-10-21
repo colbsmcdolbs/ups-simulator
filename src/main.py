@@ -34,19 +34,24 @@ print("All packages loaded!")
 # This block of code runs at O(n^2) as it has to go through each row of the 
 # .csv distance file and then again through the list of different addresses
 with open(f"{str(file_path)}/assets/distance.csv") as csvDataFile:
+    i = 0
     for row in csv.reader(csvDataFile):
         address = clean_address(row[1])
         address_graph.add_vertex(Vertex(address))
+        for j in range(2, (i + 3)): # Save some CPU cycles by not going through empty strings
+            i_address = list(address_graph.vertex_set)[i]
+            j_address = list(address_graph.vertex_set)[j - 2]
+            distance = row[j]
+            address_graph.add_undirected_edge(i_address, j_address, distance)
+        i = i + 1
 print("Graph created!")
 
-"""DEBUG
-count = 1
-while count < 41:
-    print(package_table.get(count).address)
-    count = count + 1
+truck_1 = generate_truck(1, package_table)
+truck_2 = generate_truck(2, package_table)
 
-for add in address_graph.adjacency_list:
-    print(add.name)
-"""
+"""TESTS :)
+
+
+END"""
 
 print("End of Run.")

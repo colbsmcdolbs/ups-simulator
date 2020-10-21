@@ -6,17 +6,17 @@ from classes.vertex import Vertex
 
 class Graph:
     def __init__(self):
-        self.adjacency_list = {}
+        self.vertex_set = {}
         self.edge_weights = {}
         self.address_map = {} # Haxxorz at the expense of using more memory..
         
     def add_vertex(self, new_vertex: Vertex) -> None:
-        self.adjacency_list[new_vertex] = []
+        self.vertex_set[new_vertex] = []
         self.address_map[new_vertex.name] = new_vertex
         
     def __add_directed_edge(self, from_vertex: Vertex, to_vertex: Vertex, weight: float) -> None:
         self.edge_weights[(from_vertex, to_vertex)] = weight
-        self.adjacency_list[from_vertex].append(to_vertex)
+        self.vertex_set[from_vertex].append(to_vertex)
         
     def add_undirected_edge(self, vertex_a: Vertex, vertex_b: Vertex, weight: float) -> None:
         self.__add_directed_edge(vertex_a, vertex_b, weight)
