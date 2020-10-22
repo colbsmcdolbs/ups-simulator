@@ -9,19 +9,23 @@ class Graph:
         self.vertex_set = {}
         self.edge_weights = {}
         self.address_map = {} # Haxxorz at the expense of using more memory..
-        
+    
+    # Time/Space Complexity: O(1)
     def add_vertex(self, new_vertex: Vertex) -> None:
         self.vertex_set[new_vertex] = []
         self.address_map[new_vertex.name] = new_vertex
         
+    # Time/Space Complexity: O(1)
     def __add_directed_edge(self, from_vertex: Vertex, to_vertex: Vertex, weight: float) -> None:
         self.edge_weights[(from_vertex, to_vertex)] = weight
         self.vertex_set[from_vertex].append(to_vertex)
         
+    # Time/Space Complexity: O(1)
     def add_undirected_edge(self, vertex_a: Vertex, vertex_b: Vertex, weight: float) -> None:
         self.__add_directed_edge(vertex_a, vertex_b, weight)
         self.__add_directed_edge(vertex_b, vertex_a, weight)
 
+    # Time/Space Complexity: O(1)
     def get_address_distance(self, start: str, end: str) -> float:
         vertex_1 = self.address_map[start]
         vertex_2 = self.address_map[end]

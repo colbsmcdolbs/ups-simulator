@@ -48,6 +48,7 @@ class Package_Table:
     def __hash2(self, packageId: int) -> int:\
         return (self.__prime - (int(packageId) % self.__prime))
 
+    # Time/Space Complexity: O(n)
     def print_packages(self) -> None:
         index = 1
         for pack in self.hashTable:

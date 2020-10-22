@@ -9,15 +9,27 @@ from classes.package_table import Package_Table
 from classes.truck import Truck
 from classes.vertex import Vertex
 from classes.graph import Graph
-from helpers.helpers import generate_truck, clean_address
+from helpers.helpers import generate_truck, clean_address, greedy_delivery, incorrect_format
 import csv
 from pathlib import Path
+
+user_defined_time = False
+
+value = input("Do you wish to specify a time to check? (Y/N):")
+
+if value.lower() == 'y':
+    user_defined_time = True
+    hour = int(input("Hour Value (Between 8-15): "))
+    if hour > 15 or hour < 8:
+        incorrect_format()
+    minute = int(input("Minute Value (Between 0-59): "))
+    if minute < 0 or minute > 59:
+        incorrect_format()
+
 
 package_table: Package_Table = Package_Table()
 address_graph: Graph = Graph()
 file_path = Path(__file__).parent.absolute()
-
-print("Starting run...")
 
 # Populate all of the packages from csv file into the hashtable
 # This block of code runs at O(n), where n is the number of packages in
@@ -27,8 +39,6 @@ with open(f"{str(file_path)}/assets/package.csv") as package_file:
     for row in reader:
         package = Package(row[0], clean_address(row[1]), row[2], row[3], row[4], row[5], row[6], row[7] or "")
         package_table.put(package)
-print("All packages loaded!")
-
 
 # Generate Mapping for Distances
 # This block of code runs at O(n^2) as it has to go through each row of the 
@@ -44,14 +54,25 @@ with open(f"{str(file_path)}/assets/distance.csv") as csvDataFile:
             distance = row[j]
             address_graph.add_undirected_edge(i_address, j_address, distance)
         i = i + 1
-print("Graph created!")
 
 truck_1 = generate_truck(1, package_table)
 truck_2 = generate_truck(2, package_table)
 
-"""TESTS :)
+greedy_delivery(truck_1, address_graph)
+greedy_delivery(truck_2, address_graph)
 
+if truck_1.total_miles < truck_2.total_miles:
+    truck_1 = generate_truck(3, package_table, truck_1)
+    greedy_delivery(truck_1, address_graph)
+else:
+    truck_2 = generate_truck(3, package_table, truck_2)
+    greedy_delivery(truck_2, address_graph)
 
-END"""
+if user_defined_time:
+    print(f"\nShowing Package Statuses at {hour}:{minute}")
+    for i in range(1, 41):
+        p = package_table.get(i)
+        p.print_package_status(hour, minute)
 
-print("End of Run.")
+print("End of Run!")
+print(f"Total Miles Driven: {truck_1.total_miles + truck_2.total_miles}")
