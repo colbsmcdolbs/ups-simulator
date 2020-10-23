@@ -4,10 +4,8 @@ from classes.graph import Graph
 import re
 
 # Time/Space Complexity: O(n)
+# Manually load all of the packages into the truck.
 def generate_truck(truck_number: int, package_table: Package_Table, truck: Truck = None) -> Truck:
-    """
-    Manually load ALL the trucks!
-    """
     if truck == None:
         truck = Truck()
 
@@ -69,6 +67,7 @@ def incorrect_format() -> None:
 THE GREEDY ALGORITHM
 Time Complexity: O(n^2)
 Space Complexity: O(n)
+Explained in the document write up.
 """
 def greedy_delivery(truck: Truck, address_graph: Graph) -> None:
     while truck.total_packages() != 0:

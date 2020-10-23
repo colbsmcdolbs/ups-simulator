@@ -15,12 +15,12 @@ from pathlib import Path
 
 user_defined_time = False
 
-value = input("Do you wish to specify a time to check? (Y/N):")
+value = input("Do you wish to specify a time to check? (Y/N): ")
 
-if value.lower() == 'y':
+if value.lower() == 'y': # Determine if the user wants to see statuses at certain times.
     user_defined_time = True
-    hour = int(input("Hour Value (Between 8-15): "))
-    if hour > 15 or hour < 8:
+    hour = int(input("Hour Value (Between 8-17): "))
+    if hour > 17 or hour < 8:
         incorrect_format()
     minute = int(input("Minute Value (Between 0-59): "))
     if minute < 0 or minute > 59:
@@ -55,12 +55,15 @@ with open(f"{str(file_path)}/assets/distance.csv") as csvDataFile:
             address_graph.add_undirected_edge(i_address, j_address, distance)
         i = i + 1
 
+# Generate the trucks and put the packages in them.
 truck_1 = generate_truck(1, package_table)
 truck_2 = generate_truck(2, package_table)
 
+# Deliver all the packages for each truck
 greedy_delivery(truck_1, address_graph)
 greedy_delivery(truck_2, address_graph)
 
+# Load all of the rest of the packages in the truck with the shortest miles
 if truck_1.total_miles < truck_2.total_miles:
     truck_1 = generate_truck(3, package_table, truck_1)
     greedy_delivery(truck_1, address_graph)
@@ -68,6 +71,7 @@ else:
     truck_2 = generate_truck(3, package_table, truck_2)
     greedy_delivery(truck_2, address_graph)
 
+# If user inputted correct time, show the package statuses at that time.
 if user_defined_time:
     print(f"\nShowing Package Statuses at {hour}:{minute}")
     for i in range(1, 41):
